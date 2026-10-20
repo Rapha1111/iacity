@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IACity — simulation sociale</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header id="top">
+  <div class="brand">IA<span>City</span></div>
+  <div id="clock" class="pill">Jour 1 08:00</div>
+  <div class="group">
+    <button id="btn-play" title="Pause / reprise">⏸ Pause</button>
+    <button id="btn-step" title="Avancer d'un pas (en pause)" disabled>⏭ Pas</button>
+    <label>Vitesse
+      <select id="speed">
+        <option value="0.5">×0,5</option><option value="1" selected>×1</option><option value="2">×2</option>
+        <option value="5">×5</option><option value="10">×10</option><option value="30">×30</option>
+      </select>
+    </label>
+  </div>
+  <div class="group">
+    <label>Agents <input id="new-n" type="number" min="1" max="20" value="8"></label>
+    <label>Graine <input id="new-seed" type="text" placeholder="aléatoire" size="9"></label>
+    <label>Personnage <input id="new-human" type="text" placeholder="(optionnel)" size="10" maxlength="24"></label>
+    <button id="btn-new" class="warn">♻ Nouvelle simulation</button>
+  </div>
+  <div id="llm-badge" class="pill" title="État du modèle local">IA : …</div>
+  <div id="toast" role="status"></div>
+</header>
+
+<main>
+  <section id="stage">
+    <canvas id="city" width="1056" height="672"></canvas>
+    <div id="map-tip" class="tip" hidden></div>
+    <div id="legend">
+      <label><input type="checkbox" id="opt-names" checked> noms</label>
+      <label><input type="checkbox" id="opt-bubbles" checked> bulles</label>
+      <span id="effects"></span>
+    </div>
+    <div id="agent-chips"></div>
+  </section>
+
+  <aside id="side">
+    <nav id="tabs">
+      <button data-tab="agent" class="on">Agent</button>
+      <button data-tab="iachat">IACHAT</button>
+      <button data-tab="journal">Journal</button>
+      <button data-tab="convs">Conversations</button>
+      <button data-tab="human">Mon personnage</button>
+      <button data-tab="world">Monde</button>
+      <button data-tab="system">Système</button>
+    </nav>
+    <div id="panel"></div>
+  </aside>
+</main>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
